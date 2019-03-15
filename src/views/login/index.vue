@@ -7,7 +7,7 @@
         <span class="svg-container svg-container_login">
           <svg aria-hidden="true" class="svg-icon">
             <use xlink:href="#icon-user">
-              <svg class="icon" viewBox="0 0 1024 1024" id="icon-user" width="100%" height="100%"><path d="M504.951 511.98c93.49 0 169.28-74.002 169.28-165.26 0-91.276-75.79-165.248-169.28-165.248-93.486 0-169.287 73.972-169.279 165.248-0.001 91.258 75.793 165.26 169.28 165.26z m77.6 55.098H441.466c-120.767 0-218.678 95.564-218.678 213.45V794.3c0 48.183 97.911 48.229 218.678 48.229H582.55c120.754 0 218.66-1.78 218.66-48.229v-13.77c0-117.887-97.898-213.45-218.66-213.45z" p-id="7987"></path></svg>
+              <svg class="icon" color="#fff" viewBox="0 0 1024 1024" id="icon-user" width="100%" height="100%"><path d="M504.951 511.98c93.49 0 169.28-74.002 169.28-165.26 0-91.276-75.79-165.248-169.28-165.248-93.486 0-169.287 73.972-169.279 165.248-0.001 91.258 75.793 165.26 169.28 165.26z m77.6 55.098H441.466c-120.767 0-218.678 95.564-218.678 213.45V794.3c0 48.183 97.911 48.229 218.678 48.229H582.55c120.754 0 218.66-1.78 218.66-48.229v-13.77c0-117.887-97.898-213.45-218.66-213.45z" p-id="7987"></path></svg>
             </use>
           </svg>
         </span>
@@ -17,7 +17,9 @@
         <span class="svg-container">
           <svg aria-hidden="true" class="svg-icon">
             <use xlink:href="#icon-password">
-              <svg class="icon" viewBox="0 0 1024 1024" id="icon-password" width="100%" height="100%"><path d="M780.8 354.579692 665.6 354.579692 665.6 311.689846c0-72.310154-19.849846-193.299692-153.6-193.299692-138.870154 0-153.6 135.049846-153.6 193.299692l0 42.889846L243.2 354.579692 243.2 311.689846C243.2 122.249846 348.790154 0 512 0s268.8 122.249846 268.8 311.689846L780.8 354.579692zM588.8 669.420308C588.8 625.900308 554.220308 590.769231 512 590.769231s-76.8 35.131077-76.8 78.651077c0 29.459692 15.399385 54.468923 38.439385 67.820308l0 89.639385c0 21.740308 17.250462 39.699692 38.4 39.699692s38.4-17.959385 38.4-39.699692l0-89.639385C573.44 723.889231 588.8 698.88 588.8 669.420308zM896 512l0 393.609846c0 65.260308-51.869538 118.390154-115.2 118.390154L243.2 1024c-63.291077 0-115.2-53.129846-115.2-118.390154L128 512c0-65.220923 51.869538-118.390154 115.2-118.390154l537.6 0C844.130462 393.609846 896 446.779077 896 512z" p-id="9230"></path></svg>
+              <svg class="icon" color="#fff" viewBox="0 0 1024 1024" id="icon-password" width="100%" height="100%">
+                <path d="M780.8 354.579692 665.6 354.579692 665.6 311.689846c0-72.310154-19.849846-193.299692-153.6-193.299692-138.870154 0-153.6 135.049846-153.6 193.299692l0 42.889846L243.2 354.579692 243.2 311.689846C243.2 122.249846 348.790154 0 512 0s268.8 122.249846 268.8 311.689846L780.8 354.579692zM588.8 669.420308C588.8 625.900308 554.220308 590.769231 512 590.769231s-76.8 35.131077-76.8 78.651077c0 29.459692 15.399385 54.468923 38.439385 67.820308l0 89.639385c0 21.740308 17.250462 39.699692 38.4 39.699692s38.4-17.959385 38.4-39.699692l0-89.639385C573.44 723.889231 588.8 698.88 588.8 669.420308zM896 512l0 393.609846c0 65.260308-51.869538 118.390154-115.2 118.390154L243.2 1024c-63.291077 0-115.2-53.129846-115.2-118.390154L128 512c0-65.220923 51.869538-118.390154 115.2-118.390154l537.6 0C844.130462 393.609846 896 446.779077 896 512z" p-id="9230"></path>
+              </svg>
             </use>
           </svg>
         </span>
@@ -25,7 +27,7 @@
           placeholder="password"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" style="width:100%;" :loading="loading" @click.native.prevent="handleLogin">
+        <el-button type="primary" size="medium" style="width:100%;" :loading="loading" @click.native.prevent="handleLogin">
           登录
         </el-button>
       </el-form-item>
@@ -95,25 +97,24 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
-  $dark_gray: #889aa4;
-  $light_gray: #eee;
 
   .login-container {
     position: fixed;
     height: 100%;
     width: 100%;
     background-color: rgb(38, 38, 38);
+
     input:-webkit-autofill {
       -webkit-box-shadow: 0 0 0px 1000px #293444 inset !important;
       -webkit-text-fill-color: #fff !important;
     }
     input {
       background: transparent;
-      border: 0px;
+      border: 0;
       -webkit-appearance: none;
       border-radius: 0px;
-      padding: 12px 5px 12px 15px;
-      color: $light_gray;
+      padding: 10px 5px 10px 15px;
+      color: #fff;
     }
     .el-input {
       display: inline-block;
@@ -121,15 +122,16 @@ export default {
     }
     .tips {
       font-size: 14px;
-      color: #fff;
+      color: #666;
       margin-bottom: 10px;
     }
     .svg-container {
       padding: 6px 5px 6px 15px;
-      color: $dark_gray;
+      color: #889aa4;
       vertical-align: middle;
       width: 30px;
       display: inline-block;
+
       .svg-icon {
         width: 1em;
         height: 1em;
@@ -141,7 +143,7 @@ export default {
     .title {
       font-size: 26px;
       font-weight: 400;
-      color: $light_gray;
+      color: #333;
       margin: 0px auto 40px auto;
       text-align: center;
       font-weight: bold;
@@ -153,26 +155,13 @@ export default {
       width: 400px;
       padding: 35px 35px 15px 35px;
       margin: 120px auto;
+      background-color: #fff;
     }
     .el-form-item {
       border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(0, 0, 0, 0.1);
+      background: rgba(0, 0, 0, 0.5);
       border-radius: 5px;
       color: #454545;
-    }
-    .show-pwd {
-      position: absolute;
-      right: 10px;
-      top: 7px;
-      font-size: 16px;
-      color: $dark_gray;
-      cursor: pointer;
-      user-select:none;
-    }
-    .thirdparty-button{
-      position: absolute;
-      right: 35px;
-      bottom: 28px;
     }
   }
 </style>

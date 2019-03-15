@@ -1,0 +1,51 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><title>vue-element-admin</title><style type=text/css>.svg-icon {
+        width: 40px;
+        height: 40px;
+        stroke: #343640;
+        stroke-width: 2;
+        stroke-linecap: round;
+      }
+      .svg-icon .path {
+        fill: none;
+      }
+      .m-loading {
+        background: none;
+        animation: loading-rotate 0.8s linear infinite;
+      }
+      @keyframes loading-rotate {
+        to {
+          transform:rotate(1turn)
+        }
+      }
+      @keyframes loading-wipe {
+        0% {
+          stroke-dasharray:1,200;
+          stroke-dashoffset:0;
+        }
+        50% {
+          stroke-dasharray:90,150;
+          stroke-dashoffset:-40px;
+        }
+        to {
+          stroke-dasharray:90,150;
+          stroke-dashoffset:-120px;
+        }
+      }
+      .init-box {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .init-box .init-loading {
+        width: 128px;
+        height: 128px;
+      }
+      .init-box .init-tips {
+        color: #8B90A0;
+      }</style><link rel="shortcut icon" href=./favicon.ico><link href=./static/css/app.9914e437a702a80396fcd43e377c22d4.css rel=stylesheet></head><body><div id=app><div class=init-box><svg viewBox="0 0 50 50" class="svg-icon m-loading init-loading"><circle cx=25 cy=25 r=20 fill=none stroke=#F2F2F2 class=path></circle><circle cx=25 cy=25 r=20 fill=none stroke=#24292e stroke-dasharray=60,150 class=path></circle></svg><p class=init-tips>初次加载，请耐心等待...</p></div></div><script type=text/javascript src=./static/js/manifest.d5f38c0890e07db0de33.js></script><script type=text/javascript src=./static/js/vendor.a86460b79f48889b35ad.js></script><script type=text/javascript src=./static/js/app.6eec0eefb79cede4022c.js></script></body></html>

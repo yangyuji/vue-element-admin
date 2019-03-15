@@ -6,8 +6,6 @@ package-lock.json
 
 # Editor directories and files
 node_modules
-dist
-docs/
 .idea
 .vscode
 *.suo
