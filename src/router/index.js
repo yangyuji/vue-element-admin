@@ -38,4 +38,25 @@ export default new Router({
 })
 
 // 动态加载菜单
-export const asyncRouterMap = []
+export const asyncRouterMap = [
+  {
+    path: '/debug',
+    component: Layout,
+    redirect: '/debug/index',
+    name: '系统日志',
+    meta: {
+      title: '系统日志',
+      icon: 'el-icon-setting',
+      roles: ['admin']
+    },
+    children: [
+      {
+        name: '错误日志',
+        meta: { title: '错误日志' },
+        path: 'index',
+        props: true,
+        component: () => import('@/views/debug/index')
+      }
+    ]
+  }
+]

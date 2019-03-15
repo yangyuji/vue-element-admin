@@ -2,9 +2,9 @@ import Mock from 'mockjs'
 import loginAPI from './login'
 import articleAPI from './article'
 
-// Mock.setup({
-//   timeout: '350-600'
-// })
+Mock.setup({
+  timeout: '350-800'
+})
 
 // 登录相关
 Mock.mock(/\/login\/login/, 'post', loginAPI.loginByUsername)

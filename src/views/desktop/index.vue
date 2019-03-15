@@ -18,7 +18,6 @@
     computed: {
       ...mapGetters([
         'name',
-        'avatar',
         'roles'
       ])
     },
