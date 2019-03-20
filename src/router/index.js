@@ -40,6 +40,28 @@ export default new Router({
 // 动态加载菜单
 export const asyncRouterMap = [
   {
+    name: '使用实例',
+    path: '/examples',
+    component: Layout,
+    redirect: '/examples/table/list',
+    meta: {
+      title: '使用实例',
+      icon: 'el-icon-tickets',
+      roles: ['admin']
+    },
+    children: [
+      {
+        name: '数据列表',
+        path: 'table/list',
+        component: () => import('@/views/examples/table/list'),
+        meta: {
+          title: '数据列表',
+          roles: ['admin']
+        }
+      }
+    ]
+  },
+  {
     path: '/debug',
     component: Layout,
     redirect: '/debug/index',

@@ -7,8 +7,9 @@ import '@/styles/index.scss' // reset css
 import App from './App'
 import router from './router'
 import store from './store'
-import '@/permission' // permission control
-import '@/debug' // 错误日志收集
+import './mock'
+import './permission' // permission control
+import './debug' // 错误日志收集
 
 Vue.use(ElementUI, {
   size: 'small' // default: medium

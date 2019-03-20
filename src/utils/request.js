@@ -4,7 +4,7 @@ import store from '../store'
 import { getToken } from '@/utils/auth'
 
 const service = axios.create({
-  baseURL: '/cas-admin-app',
+  baseURL: '/',
   timeout: 15000
 })
 
