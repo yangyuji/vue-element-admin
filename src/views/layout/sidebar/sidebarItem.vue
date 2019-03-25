@@ -20,51 +20,48 @@
 </template>
 
 <script>
-import path from 'path'
+  import path from 'path'
 
-export default {
-  name: 'SidebarItem',
-  props: {
-    // route object
-    item: {
-      type: Object,
-      required: true
+  export default {
+    name: 'SidebarItem',
+    props: {
+      item: {
+        type: Object,
+        required: true
+      },
+      isNest: {
+        type: Boolean,
+        default: false
+      },
+      basePath: {
+        type: String,
+        default: ''
+      }
     },
-    isNest: {
-      type: Boolean,
-      default: false
+    data() {
+      return {
+        onlyOneChild: null
+      }
     },
-    basePath: {
-      type: String,
-      default: ''
-    }
-  },
-  data() {
-    return {
-      onlyOneChild: null
-    }
-  },
-  methods: {
-    resolvePath(...paths) {
-      return path.resolve(this.basePath, ...paths)
+    methods: {
+      resolvePath(...paths) {
+        return path.resolve(this.basePath, ...paths)
+      }
     }
   }
-}
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   .nest-menu .el-submenu > .el-submenu__title,
   .el-submenu .el-menu-item {
     min-width: 179px!important;
-    background-color: #1f2d3d !important;
+    background-color: #1f2d3d!important;
 
     &:hover {
-      background-color: #001528 !important;
+      background-color: #304156!important;
     }
   }
   .el-menu--collapse .el-menu .el-submenu{
     min-width: 180px!important;
   }
-
 </style>
-

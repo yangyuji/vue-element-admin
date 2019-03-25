@@ -39,7 +39,7 @@
       :expand-row-keys="tableExpands"
       :current-row-key="tableSelected"
       v-loading="listLoading"
-      element-loading-text="拼命加载中" style="width: 100%;">
+      element-loading-text="拼命加载中">
       <el-table-column type="expand">
         <template slot-scope="props">
           <el-form label-position="left" inline class="table-expand">
@@ -69,7 +69,7 @@
       </el-table-column>
       <el-table-column prop="id" width="46px" align="center" label="编码">
       </el-table-column>
-      <el-table-column prop="title" width="220px" label="标题">
+      <el-table-column prop="title" label="标题">
       </el-table-column>
       <el-table-column prop="author" width="100px" label="作者" align="center">
       </el-table-column>
@@ -89,7 +89,7 @@
       </el-table-column>
       <el-table-column prop="importance" label="数字" width="100px" align="center">
       </el-table-column>
-      <el-table-column prop="operation" width="220px" label="操作">
+      <el-table-column prop="operation" width="120px" align="center" label="操作">
         <template slot-scope="scope">
           <el-button type="text" @click="toEdit(scope.row)">编辑</el-button>
           <el-button type="text" @click="toPackage(scope.row)">删除</el-button>
