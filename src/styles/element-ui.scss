@@ -7,19 +7,22 @@
    &:focus,
    &:hover {
      color: $--color-primary;
+   }
+
+   &.el-button--default {
      border-color: $--color-border-hover;
      background-color: #fff;
    }
 
    &.el-button--primary {
-     background-color: $--color-primary;
      border-color: $--color-primary;
+     background-color: $--color-primary;
 
      &:focus,
      &:hover {
-       background: $--color-primary-hover;
-       border-color: $--color-primary-hover;
        color: #fff;
+       border-color: $--color-primary-hover;
+       background-color: $--color-primary-hover;
      }
    }
  }

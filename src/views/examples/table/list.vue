@@ -3,10 +3,10 @@
     <el-col :span="24" class="toolbar">
       <el-form :inline="true">
         <el-form-item >
-          <el-input placeholder="名称查询" :maxlength="20" v-model="listQuery.appName"></el-input>
+          <el-input placeholder="名称查询" :maxlength="20" v-model="listQuery.title"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-select v-model="listQuery.appStatus" clearable placeholder="状态查询">
+          <el-select v-model="listQuery.status" clearable placeholder="状态查询">
             <el-option
               v-for="item in mapStatus"
               :key="item.statusId"
@@ -91,8 +91,8 @@
       </el-table-column>
       <el-table-column prop="operation" width="120px" align="center" label="操作">
         <template slot-scope="scope">
-          <el-button type="text" @click="toEdit(scope.row)">编辑</el-button>
-          <el-button type="text" @click="toPackage(scope.row)">删除</el-button>
+          <el-button type="text">编辑</el-button>
+          <el-button type="text">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -121,23 +121,15 @@
         listQuery: {
           pageNo: 1,
           pageSize: 10,
-          appName: '',
-          appStatus: '',
-          categoryId: ''
+          type: '',
+          title: ''
         },
-        currentCate: [],
         tableList: [],
         tableExpands: [],
         tableSelected: -1,
         getRowKeys(row) {
           return row.id
         },
-        category: [{
-          id: 0,
-          categoryName: '根类',
-          children: []
-        }],
-        existCategory: {},
         listLoading: true,
         deleteShow: false,
         mapStatus: [
@@ -165,7 +157,6 @@
           if (typeof this.listQuery[attr] === 'object' && this.listQuery[attr].length === 0) delete this.listQuery[attr]
         }
         fetchList(this.listQuery).then(res => {
-          console.log(res.data)
           this.total = res.data.total
           this.tableList = res.data.list
           this.listLoading = false
@@ -173,16 +164,12 @@
           this.listLoading = false
         })
       },
-      chooseCategory(val) {
-        this.listQuery.categoryId = val[val.length - 1]
-      },
       formatTime(row, column) {
         return parseTime(row.timestamp)
       },
       doFilter() {
-        if (this.listQuery.appStatus === '' &&
-          !this.listQuery.categoryId &&
-          !this.listQuery.appName) {
+        if (!this.listQuery.title &&
+          !this.listQuery.type.length) {
           this.$message({
             message: '请输入查询条件',
             type: 'warning'
@@ -192,10 +179,8 @@
         this.fetchData()
       },
       resetFilter() {
-        this.listQuery.appStatus = ''
-        this.listQuery.categoryId = ''
-        this.currentCate = []
-        this.listQuery.appName = ''
+        this.listQuery.type = ''
+        this.listQuery.title = ''
         this.fetchData()
       },
       handleSizeChange(val) {
