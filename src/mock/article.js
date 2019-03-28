@@ -56,7 +56,7 @@ export default {
   },
   getPv: () => ({
     code: '0000',
-    pvData: [
+    data: [
       { key: 'PC', pv: 1024 },
       { key: 'mobile', pv: 1024 },
       { key: 'ios', pv: 1024 },
@@ -67,7 +67,11 @@ export default {
     const { id } = param2Obj(config.url)
     for (const article of List) {
       if (article.id === +id) {
-        return article
+        return {
+          code: '0000',
+          data: article,
+          msg: ''
+        }
       }
     }
   },

@@ -58,6 +58,22 @@ export const asyncRouterMap = [
           title: '数据列表',
           roles: ['admin']
         }
+      },
+      {
+        name: '新增表单',
+        meta: { title: '新增表单' },
+        path: 'table/add',
+        hidden: true,
+        props: true,
+        component: () => import('@/views/examples/form/edit')
+      },
+      {
+        name: '编辑表单',
+        meta: { title: '编辑表单' },
+        path: 'table/edit/:id',
+        hidden: true,
+        props: true,
+        component: () => import('@/views/examples/form/edit')
       }
     ]
   },

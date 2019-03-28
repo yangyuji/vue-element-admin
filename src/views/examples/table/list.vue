@@ -26,7 +26,7 @@
     <el-col :span="24" class="toolbar">
       <el-form :inline="true">
         <el-form-item>
-          <el-button type="primary" @click="toAdd()"><i class="el-icon-plus"></i> 创建应用</el-button>
+          <el-button type="primary" @click="toAdd()"><i class="el-icon-plus"></i> 创建表单</el-button>
         </el-form-item>
       </el-form>
     </el-col>
@@ -91,7 +91,7 @@
       </el-table-column>
       <el-table-column prop="operation" width="120px" align="center" label="操作">
         <template slot-scope="scope">
-          <el-button type="text">编辑</el-button>
+          <el-button type="text" @click="toEdit(scope.row)">编辑</el-button>
           <el-button type="text">删除</el-button>
         </template>
       </el-table-column>
@@ -182,6 +182,12 @@
         this.listQuery.type = ''
         this.listQuery.title = ''
         this.fetchData()
+      },
+      toAdd() {
+        this.$router.push({ path: './add' })
+      },
+      toEdit(row) {
+        this.$router.push({ path: './edit/' + row.id })
       },
       handleSizeChange(val) {
         this.listQuery.pageSize = val
