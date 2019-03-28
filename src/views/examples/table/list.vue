@@ -3,10 +3,10 @@
     <el-col :span="24" class="toolbar">
       <el-form :inline="true">
         <el-form-item >
-          <el-input placeholder="名称查询" :maxlength="20" v-model="listQuery.title"></el-input>
+          <el-input placeholder="名称筛选" :maxlength="20" v-model="listQuery.title"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-select v-model="listQuery.status" clearable placeholder="状态查询">
+          <el-select v-model="listQuery.status" clearable placeholder="状态筛选">
             <el-option
               v-for="item in mapStatus"
               :key="item.statusId"
@@ -14,9 +14,6 @@
               :value="item.statusId">
             </el-option>
           </el-select>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" @click="doFilter()"><i class="el-icon-search"></i> 查询</el-button>
         </el-form-item>
         <el-form-item>
           <el-button @click="resetFilter()"><i class="el-icon-close"></i> 重置</el-button>
@@ -37,7 +34,6 @@
       :data="tableList"
       :row-key="getRowKeys"
       :expand-row-keys="tableExpands"
-      :current-row-key="tableSelected"
       v-loading="listLoading"
       element-loading-text="拼命加载中">
       <el-table-column type="expand">
@@ -121,12 +117,11 @@
         listQuery: {
           pageNo: 1,
           pageSize: 10,
-          type: '',
+          status: '',
           title: ''
         },
         tableList: [],
         tableExpands: [],
-        tableSelected: -1,
         getRowKeys(row) {
           return row.id
         },
@@ -146,16 +141,20 @@
         ]
       }
     },
+    watch: {
+      listQuery: {
+        deep: true,
+        handler() {
+          this.fetchData()
+        }
+      }
+    },
     created() {
       this.fetchData()
     },
     methods: {
       fetchData() {
         this.listLoading = true
-        for (const attr in this.listQuery) {
-          if (this.listQuery[attr] === '') delete this.listQuery[attr]
-          if (typeof this.listQuery[attr] === 'object' && this.listQuery[attr].length === 0) delete this.listQuery[attr]
-        }
         fetchList(this.listQuery).then(res => {
           this.total = res.data.total
           this.tableList = res.data.list
@@ -167,21 +166,9 @@
       formatTime(row, column) {
         return parseTime(row.timestamp)
       },
-      doFilter() {
-        if (!this.listQuery.title &&
-          !this.listQuery.type.length) {
-          this.$message({
-            message: '请输入查询条件',
-            type: 'warning'
-          })
-          return
-        }
-        this.fetchData()
-      },
       resetFilter() {
-        this.listQuery.type = ''
+        this.listQuery.status = ''
         this.listQuery.title = ''
-        this.fetchData()
       },
       toAdd() {
         this.$router.push({ path: './add' })
@@ -191,12 +178,10 @@
       },
       handleSizeChange(val) {
         this.listQuery.pageSize = val
-        this.fetchData()
         this.tableExpands = []
       },
       handleCurrentChange(val) {
         this.listQuery.pageNo = val
-        this.fetchData()
       }
     }
   }
