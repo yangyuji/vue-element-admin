@@ -15,17 +15,17 @@ function formatComponentName(vm) {
   )
 }
 
-// if (process.env.NODE_ENV === 'production') {
-Vue.config.errorHandler = function(err, vm, info) {
-  console.log(err, window.location.href)
-  const componentName = formatComponentName(vm)
-  const propsData = vm.$options && vm.$options.propsData
-  debugReport({
-    component: componentName,
-    props: propsData,
-    url: window.location.href,
-    err,
-    info: info
-  })
+if (process.env.NODE_ENV === 'production') {
+  Vue.config.errorHandler = function(err, vm, info) {
+    console.log(err, window.location.href)
+    const componentName = formatComponentName(vm)
+    const propsData = vm.$options && vm.$options.propsData
+    debugReport({
+      component: componentName,
+      props: propsData,
+      url: window.location.href,
+      err,
+      info: info
+    })
+  }
 }
-// }

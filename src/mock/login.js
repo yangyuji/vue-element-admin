@@ -28,5 +28,11 @@ export default {
       return false
     }
   },
-  logout: () => 'success'
+  logout: () => {
+    return {
+      code: '0000',
+      data: null,
+      msg: 'success'
+    }
+  }
 }
