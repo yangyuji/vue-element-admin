@@ -3,6 +3,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 import Layout from '@/views/layout'
+import NotFound from '@/views/404'
 
 export const constantRouterMap = [
   {
@@ -13,7 +14,7 @@ export const constantRouterMap = [
   {
     path: '/404',
     name: '404',
-    component: import('@/views/404'),
+    component: NotFound,
     hidden: true
   },
   {
@@ -94,5 +95,6 @@ export const asyncRouterMap = [
         component: () => import('@/views/debug/index')
       }
     ]
-  }
+  },
+  { path: '*', redirect: '/404', hidden: true }
 ]

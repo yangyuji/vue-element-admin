@@ -14,7 +14,6 @@
 </template>
 
 <script>
-  import logo from '../../../static/img/logo.png'
   import appHeader from './header/index.vue'
   import Sidebar from './sidebar/index.vue'
   import AppMain from './main/index.vue'
@@ -24,7 +23,6 @@
     name: 'layout',
     data() {
       return {
-        logo
       }
     },
     components: {
