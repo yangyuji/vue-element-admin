@@ -2,19 +2,18 @@ import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
 
-import Layout from '@/views/layout/index.vue'
+import Layout from '@/views/layout'
 
 export const constantRouterMap = [
   {
     path: '/login',
-    name: 'login',
-    component: import('@/views/login/index.vue'),
+    component: () => import('@/views/login'),
     hidden: true
   },
   {
     path: '/404',
     name: '404',
-    component: import('@/views/404.vue'),
+    component: import('@/views/404'),
     hidden: true
   },
   {
@@ -25,7 +24,7 @@ export const constantRouterMap = [
     hidden: true,
     children: [{
       path: 'desktop',
-      component: () => import('@/views/desktop/index.vue')
+      component: () => import('@/views/desktop')
     }]
   }
 ]
