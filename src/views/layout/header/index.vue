@@ -19,8 +19,8 @@
 </template>
 
 <script>
-  import logo from '../../../../static/images/logo.png'
-  import logoutIcon from '../../../../static/images/logout.png'
+  import logo from '../../../../static/img/logo.png'
+  import logoutIcon from '../../../../static/img/logout.png'
 
   export default {
     name: 'AppHeader',
