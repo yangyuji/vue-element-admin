@@ -8,7 +8,7 @@
         <el-step title="提交审核"></el-step>
       </el-steps>
     </div>
-    <el-form :model="form" :rules="rules" ref="editForm" label-width="120px" class="edit-form">
+    <el-form :model="form" :rules="rules" v-loading="listLoading" ref="editForm" label-width="120px" class="edit-form">
       <el-form-item label="名称" prop="appName">
         <el-input v-model="form.title" placeholder="最多输入30个字" :maxlength="30" style="width:320px;"></el-input>
       </el-form-item>
@@ -65,6 +65,7 @@
   export default {
     data() {
       return {
+        listLoading: true,
         form: {
           title: '',
           type: '',
@@ -126,11 +127,15 @@
       },
       fetchDetail() {
         if (this.id) {
+          this.listLoading = true
           fetchArticle(this.id).then((res) => {
-            if (res.data) {
-              this.form = res.data
-            }
+            this.form = res.data
+            this.listLoading = false
+          }).catch(_ => {
+            this.listLoading = false
           })
+        } else {
+          this.listLoading = false
         }
       },
       linkBack() {

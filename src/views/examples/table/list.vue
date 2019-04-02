@@ -39,7 +39,7 @@
       <el-table-column type="expand">
         <template slot-scope="props">
           <el-form label-position="left" inline class="table-expand">
-            <el-form-item class="all-line" label="应用图标">
+            <el-form-item class="all-line" label="图标">
               <img :src="props.row.image_uri">
             </el-form-item>
             <el-form-item label="标题">
@@ -88,7 +88,7 @@
       <el-table-column prop="operation" width="120px" align="center" label="操作">
         <template slot-scope="scope">
           <el-button type="text" @click="toEdit(scope.row)">编辑</el-button>
-          <el-button type="text">删除</el-button>
+          <el-button type="text" @click="toDelete(scope.row)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -103,6 +103,18 @@
                    style="text-align:right;margin-top:20px;">
     </el-pagination>
 
+    <!-- 删除弹框 -->
+    <el-dialog
+      title="操作提示"
+      :append-to-body="true"
+      :visible.sync="delObj.show"
+      width="30%">
+      <span>确认删除当前数据吗？</span>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="delObj.show = false">取 消</el-button>
+        <el-button type="primary" @click="handleDelete">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -126,7 +138,10 @@
           return row.id
         },
         listLoading: true,
-        deleteShow: false,
+        delObj: {
+          show: false,
+          obj: null
+        },
         mapStatus: [
           {
             statusId: 'published',
@@ -175,6 +190,25 @@
       },
       toEdit(row) {
         this.$router.push({ path: './edit/' + row.id })
+      },
+      toDelete(row) {
+        this.delObj.show = true
+        this.delObj.obj = row
+      },
+      handleDelete() {
+        this.delObj.show = false
+        setTimeout(() => {
+          if (this.tableList.length > 1) {
+            const idx = this.tableList.findIndex((item) => { return item.id === this.delObj.obj.id })
+            this.tableList.splice(idx, 1)
+            this.$message({
+              message: '删除成功',
+              type: 'success'
+            })
+          } else {
+            this.fetchData()
+          }
+        }, 1000)
       },
       handleSizeChange(val) {
         this.listQuery.pageSize = val

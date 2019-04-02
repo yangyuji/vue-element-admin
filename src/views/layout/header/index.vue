@@ -1,9 +1,9 @@
 <template>
   <header class="app-header">
-    <img class="header-logo" :src="logo">vue-element-admin管理后台
+    <img class="header-logo" src="https://yangyuji.github.io/vue-element-admin/static/img/logo.png">vue-element-admin管理后台
     <el-dropdown class="avatar-container" trigger="click">
       <div class="avatar-wrapper">
-        <img class="user-avatar" :src="logoutIcon">
+        <img class="user-avatar" src="https://yangyuji.github.io/vue-element-admin/static/img/logout.png">
         <i class="el-icon-caret-bottom"></i>
       </div>
       <el-dropdown-menu class="user-dropdown" slot="dropdown">
@@ -19,15 +19,10 @@
 </template>
 
 <script>
-  import logo from '../../../../static/img/logo.png'
-  import logoutIcon from '../../../../static/img/logout.png'
-
   export default {
     name: 'AppHeader',
     data() {
       return {
-        logo,
-        logoutIcon
       }
     },
     methods: {
