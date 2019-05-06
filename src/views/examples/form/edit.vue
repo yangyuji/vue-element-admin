@@ -52,7 +52,7 @@
         </el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm')">{{ id ? '保存修改' : '立即创建' }}</el-button>
+        <el-button type="primary" @click="submitForm">{{ id ? '保存修改' : '立即创建' }}</el-button>
         <el-button @click="linkBack">返回</el-button>
       </el-form-item>
     </el-form>

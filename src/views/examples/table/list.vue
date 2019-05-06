@@ -16,14 +16,14 @@
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button @click="resetFilter()"><i class="el-icon-close"></i> 重置</el-button>
+          <el-button @click="resetFilter"><i class="el-icon-close"></i> 重置</el-button>
         </el-form-item>
       </el-form>
     </el-col>
     <el-col :span="24" class="toolbar">
       <el-form :inline="true">
         <el-form-item>
-          <el-button type="primary" @click="toAdd()"><i class="el-icon-plus"></i> 创建表单</el-button>
+          <el-button type="primary" @click="toAdd"><i class="el-icon-plus"></i> 创建表单</el-button>
         </el-form-item>
       </el-form>
     </el-col>
