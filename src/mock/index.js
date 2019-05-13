@@ -26,5 +26,6 @@ Mock.mock(/\/article\/list/, 'get', articleAPI.getList)
 Mock.mock(/\/article\/detail/, 'get', articleAPI.getArticle)
 Mock.mock(/\/article\/create/, 'post', articleAPI.createArticle)
 Mock.mock(/\/article\/update/, 'post', articleAPI.updateArticle)
+Mock.mock(/\/article\/delete/, 'post', articleAPI.deleteArticle)
 
 export default Mock

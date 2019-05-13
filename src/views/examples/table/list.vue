@@ -2,7 +2,7 @@
   <div class="app-container">
     <el-col :span="24" class="toolbar">
       <el-form :inline="true">
-        <el-form-item >
+        <el-form-item>
           <el-input placeholder="名称筛选" :maxlength="20" v-model="listQuery.title"></el-input>
         </el-form-item>
         <el-form-item>
@@ -71,9 +71,9 @@
       </el-table-column>
       <el-table-column label="状态" width="100px" align="center">
         <template slot-scope="scope">
-          <span v-if="scope.row.status == 'published'"  type="success">已发布</span>
-          <span v-if="scope.row.status == 'draft'"  type="success">已上架</span>
-          <span v-if="scope.row.status == 'deleted'"  type="info">已下架</span>
+          <span v-if="scope.row.status == 'published'" type="success">已发布</span>
+          <span v-if="scope.row.status == 'draft'" type="success">已上架</span>
+          <span v-if="scope.row.status == 'deleted'" type="info">已下架</span>
         </template>
       </el-table-column>
       <el-table-column prop="createTime" :formatter="formatTime" label="时间" width="150px">
@@ -120,7 +120,7 @@
 
 <script>
   import { parseTime } from '@/utils/index'
-  import { fetchList } from '@/api/article'
+  import { fetchList, deleteArticle } from '@/api/article'
 
   export default {
     data() {
@@ -168,15 +168,16 @@
       this.fetchData()
     },
     methods: {
-      fetchData() {
+      async fetchData() {
         this.listLoading = true
-        fetchList(this.listQuery).then(res => {
-          this.total = res.data.total
-          this.tableList = res.data.list
-          this.listLoading = false
-        }).catch(_ => {
-          this.listLoading = false
+        const { data } = await fetchList(this.listQuery)
+        this.tableList = data.list.map(v => {
+          v.display = v.display_time
+          this.$set(v, 'attr', '222')
+          return v
         })
+        this.total = data.total
+        this.listLoading = false
       },
       formatTime(row, column) {
         return parseTime(row.timestamp)
@@ -195,11 +196,16 @@
         this.delObj.show = true
         this.delObj.obj = row
       },
-      handleDelete() {
+      async handleDelete() {
         this.delObj.show = false
-        setTimeout(() => {
+        this.listLoading = true
+        const { code } = await deleteArticle(this.delObj.obj.id)
+        this.listLoading = false
+        if (code === '0000') {
           if (this.tableList.length > 1) {
-            const idx = this.tableList.findIndex((item) => { return item.id === this.delObj.obj.id })
+            const idx = this.tableList.findIndex((item) => {
+              return item.id === this.delObj.obj.id
+            })
             this.tableList.splice(idx, 1)
             this.$message({
               message: '删除成功',
@@ -208,7 +214,7 @@
           } else {
             this.fetchData()
           }
-        }, 1000)
+        }
       },
       handleSizeChange(val) {
         this.listQuery.pageSize = val
@@ -224,19 +230,23 @@
   .table-expand {
     font-size: 0;
   }
+
   .table-expand label {
     font-size: 12px;
     width: 90px;
     color: #99a9bf;
   }
+
   .table-expand .el-form-item {
     margin-right: 0;
     margin-bottom: 0;
     width: 50%;
   }
+
   .table-expand .el-form-item.all-line {
     width: 100%;
   }
+
   .table-expand .el-form-item img {
     width: 60px;
     height: 60px;

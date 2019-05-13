@@ -24,6 +24,14 @@ export function createArticle(data) {
   })
 }
 
+export function deleteArticle(id) {
+  return request({
+    url: '/article/delete',
+    method: 'post',
+    params: { id }
+  })
+}
+
 export function updateArticle(data) {
   return request({
     url: '/article/update',

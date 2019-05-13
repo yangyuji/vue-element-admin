@@ -8,7 +8,7 @@
         <el-step title="提交审核"></el-step>
       </el-steps>
     </div>
-    <el-form :model="form" :rules="rules" v-loading="listLoading" ref="editForm" label-width="120px" class="edit-form">
+    <el-form :model="form" :rules="rules" v-loading="loading" ref="editForm" label-width="120px" class="edit-form">
       <el-form-item label="名称" prop="appName">
         <el-input v-model="form.title" placeholder="最多输入30个字" :maxlength="30" style="width:320px;"></el-input>
       </el-form-item>
@@ -65,7 +65,7 @@
   export default {
     data() {
       return {
-        listLoading: true,
+        loading: true,
         form: {
           title: '',
           type: '',
@@ -104,38 +104,39 @@
     },
     methods: {
       submitForm() {
-        this.$refs['editForm'].validate((valid) => {
+        this.$refs['editForm'].validate(async(valid) => {
           if (valid) {
             if (this.id) {
               this.form.id = this.id
-              updateArticle(this.form).then(() => {
+              this.loading = true
+              const { code } = await updateArticle(this.form)
+              this.loading = false
+              if (code === '0000') {
                 this.$message({
                   message: '更新成功',
                   type: 'success'
                 })
-              })
+              }
             } else {
-              createArticle(this.form).then((res) => {
+              this.loading = true
+              const { code } = await createArticle(this.form)
+              this.loading = false
+              if (code === '0000') {
                 this.$message({
                   message: '添加成功',
                   type: 'success'
                 })
-              })
+              }
             }
           }
         })
       },
-      fetchDetail() {
+      async fetchDetail() {
         if (this.id) {
-          this.listLoading = true
-          fetchArticle(this.id).then((res) => {
-            this.form = res.data
-            this.listLoading = false
-          }).catch(_ => {
-            this.listLoading = false
-          })
-        } else {
-          this.listLoading = false
+          this.loading = true
+          const { data } = await fetchArticle(this.id)
+          this.form = data
+          this.loading = false
         }
       },
       linkBack() {

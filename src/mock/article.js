@@ -75,5 +75,10 @@ export default {
     code: '0000',
     data: null,
     msg: 'success'
+  }),
+  deleteArticle: () => ({
+    code: '0000',
+    data: null,
+    msg: 'success'
   })
 }
