@@ -8,18 +8,23 @@
         <el-step title="提交审核"></el-step>
       </el-steps>
     </div>
-    <el-form :model="form" :rules="rules" v-loading="loading" ref="editForm" label-width="120px" class="edit-form">
+    <el-form ref="editForm"
+             :model="form"
+             :rules="rules"
+             v-loading="loading"
+             label-width="120px"
+             class="edit-form">
       <el-form-item label="名称" prop="appName">
         <el-input v-model="form.title" placeholder="最多输入30个字" :maxlength="30" style="width:320px;"></el-input>
       </el-form-item>
       <el-form-item label="类型" prop="appPackage">
         <el-input :disabled="!!id" v-model="form.type" :maxlength="200" placeholder="填写类型" style="width:320px;"></el-input>
       </el-form-item>
-      <el-form-item label="提供方" prop="appProvider">
+      <el-form-item label="类别" prop="appProvider">
         <el-autocomplete style="width:320px;" :maxlength="200"
                          class="inline-input"
                          v-model="form.author"
-                         placeholder="查找已有公司或添加新公司"
+                         placeholder="查找已有类别或添加新类别"
         ></el-autocomplete>
       </el-form-item>
       <el-form-item label="搜索平台" prop="platforms">
@@ -136,6 +141,8 @@
           this.loading = true
           const { data } = await fetchArticle(this.id)
           this.form = data
+          this.loading = false
+        } else {
           this.loading = false
         }
       },
