@@ -55,11 +55,6 @@
   .nest-menu .el-submenu > .el-submenu__title,
   .el-submenu .el-menu-item {
     min-width: 179px!important;
-    background-color: #1f2d3d!important;
-
-    &:hover {
-      background-color: #304156!important;
-    }
   }
   .el-menu--collapse .el-menu .el-submenu{
     min-width: 180px!important;

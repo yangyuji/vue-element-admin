@@ -40,7 +40,7 @@
     position: relative;
     height: 68px;
     line-height: 68px;
-    background: rgba(38, 38, 38, 1);
+    background: rgb(69, 154, 255);
     width: 100%;
     padding-left: 40px;
     color: #fff;
@@ -74,6 +74,7 @@
           right: -20px;
           top: 25px;
           font-size: 12px;
+          color: #fff;
         }
       }
     }

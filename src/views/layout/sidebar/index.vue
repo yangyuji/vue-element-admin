@@ -5,8 +5,6 @@
            :collapse="isCollapse"
            :default-openeds="openeds"
            @open="menuOpen"
-           background-color="rgba(38, 38, 38, 1)"
-           text-color="#fff"
            active-text-color="#409EFF">
     <sidebar-item v-for="route in permission_routers"
                   :key="route.name"
