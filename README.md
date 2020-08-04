@@ -1,8 +1,8 @@
 # vue-element-admin
-基于vue2.0和element-ui的后台管理系统，权限+路由控制
+基于vue2和element-ui的后台管理系统，权限+路由控制
 
 ## code of principle
-只做最简单和通用的部分，open-and-shut
+只做最简单和通用的部分，包括：动态路由、权限控制、主界面
 
 ## Build Setup
 ``` bash

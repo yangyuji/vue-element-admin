@@ -1,10 +1,10 @@
 <template>
   <header class="app-header">
-    <img class="header-logo" src="https://yangyuji.github.io/vue-element-admin/static/img/logo.png">vue-element-admin管理后台
+    <img class="header-logo" :src="'./static/img/logo.png'">
+    宣传屏后台管理
     <el-dropdown class="avatar-container" trigger="click">
       <div class="avatar-wrapper">
-        <img class="user-avatar" src="https://yangyuji.github.io/vue-element-admin/static/img/logout.png">
-        <i class="el-icon-caret-bottom"></i>
+        某某 <i class="el-icon-caret-bottom"></i>
       </div>
       <el-dropdown-menu class="user-dropdown" slot="dropdown">
         <router-link class="inlineBlock" to="/">
@@ -22,8 +22,7 @@
   export default {
     name: 'AppHeader',
     data() {
-      return {
-      }
+      return {}
     },
     methods: {
       logout() {
@@ -38,11 +37,11 @@
 <style rel="stylesheet/scss" lang="scss" scoped>
   .app-header {
     position: relative;
-    height: 68px;
-    line-height: 68px;
+    height: 48px;
+    line-height: 48px;
     background: rgb(69, 154, 255);
     width: 100%;
-    padding-left: 40px;
+    padding-left: 20px;
     color: #fff;
 
     .header-logo {
@@ -50,32 +49,22 @@
       width: 30px;
       height: 30px;
       vertical-align: middle;
-      margin-right: 15px;
+      margin-right: 5px;
     }
 
     .avatar-container {
       position: absolute;
-      height: 50px;
+      height: 38px;
       display: block;
-      right: 35px;
+      right: 20px;
       top: 0;
+      color: #fff;
 
       .avatar-wrapper {
         cursor: pointer;
-        margin-top: 15px;
         position: relative;
-
-        .user-avatar {
-          width: 20px;
-          height: 20px;
-        }
-        .el-icon-caret-bottom {
-          position: absolute;
-          right: -20px;
-          top: 25px;
-          font-size: 12px;
-          color: #fff;
-        }
+        line-height: 38px;
+        margin-top: 10px;
       }
     }
   }

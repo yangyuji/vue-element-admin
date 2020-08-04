@@ -45,7 +45,7 @@
 
   .app-body {
     position: absolute;
-    top: 68px;
+    top: 48px;
     left: 0;
     bottom: 0;
     right: 0;

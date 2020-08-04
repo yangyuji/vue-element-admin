@@ -2,10 +2,10 @@
   <div style="background:#f0f2f5;margin-top:-68px;height:100%">
     <div class="wscn-http404">
       <div class="pic-404">
-        <img class="pic-404__parent" src="https://yangyuji.github.io/vue-element-admin/static/img/404.png" alt="404">
-        <img class="pic-404__child left" src="https://yangyuji.github.io/vue-element-admin/static/img/404_cloud.png" alt="404">
-        <img class="pic-404__child mid" src="https://yangyuji.github.io/vue-element-admin/static/img/404_cloud.png" alt="404">
-        <img class="pic-404__child right" src="https://yangyuji.github.io/vue-element-admin/static/img/404_cloud.png" alt="404">
+        <img class="pic-404__parent" :src="'./static/img/404.png'" alt="404">
+        <img class="pic-404__child left" :src="'./static/img/404_cloud.png'" alt="404">
+        <img class="pic-404__child mid" :src="'./static/img/404_cloud.png'" alt="404">
+        <img class="pic-404__child right" :src="'./static/img/404_cloud.png'" alt="404">
       </div>
       <div class="bullshit">
         <div class="bullshit__oops">OOPS!</div>
